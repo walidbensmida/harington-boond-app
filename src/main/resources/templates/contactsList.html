@@ -1,0 +1,25 @@
+
+
+<!--display users list-->
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <th scope="col">FIRSTNAME</th>
+        <th scope="col">LASTNAME</th>
+        <th scope="col">EMAIL</th>
+        <th scope="col">PHONE</th>
+        <th scope="col">COUNTRY</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="contact, i : ${contacts}">
+        <td th:text="${contact.data.id}"></td>
+        <td th:text="${contact.data.attributes.firstName}"></td>
+        <td th:text="${contact.data.attributes.lastName}"></td>
+        <td th:text="${contact.data.attributes.email1}"></td>
+        <td th:text="${contact.data.attributes.phone1}"></td>
+        <td th:text="${contact.data.attributes.country}"></td>
+    </tr>
+    </tbody>
+</table>

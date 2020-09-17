@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+</head>
+<body>
+<div th:insert="/fragments/header :: header"></div>
+<!--<div class="container">-->
+<!--    <form method="POST" th:action="@{/upload-csv-file}" enctype="multipart/form-data">-->
+<!--        <div class="form-group mt-3">-->
+<!--            <label for="file">Select a CSV file</label>-->
+<!--            <input type="file" name="file" class="form-control-file" id="file" accept=".csv">-->
+<!--        </div>-->
+<!--        <button type="submit" class="btn btn-primary">Import Users</button>-->
+<!--    </form>-->
+<!--</div>-->
+
+<main role="main" class="container">
+    <div class="jumbotron">
+        <form method="POST" th:action="@{/upload-csv-file}" enctype="multipart/form-data">
+            <div class="form-group mt-3">
+                <label for="file">Select a CSV file</label>
+                <input type="file" name="file" class="form-control-file" id="file" accept=".csv">
+            </div>
+            <button type="submit" class="btn btn-primary">Import Users</button>
+        </form>
+        <button type="submit" class="btn btn-primary">Import Users</button>
+    </div>
+</main>
+
+</body>
+</html>
+

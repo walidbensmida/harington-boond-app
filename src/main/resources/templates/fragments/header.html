@@ -1,0 +1,25 @@
+<div th:fragment="header">
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <h1>Harington Boond Client App</h1>
+        <p>Resize this responsive page to see the effect!</p>
+    </div>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <!-- Brand/logo -->
+        <a class="navbar-brand" href="#">
+            <img src="https://www.harington.fr/sites/default/files/styles/logo_header/public/2019-05/logo.png?itok=8PStHOZQ" alt="logo" style="width:40px;">
+        </a>
+
+        <ul class="navbar-nav">
+            <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
+                <a class="nav-link" href="#" th:href="@{/}">Hard Bounces</a>
+            </li>
+            <li class="nav-item " th:classappend="${module == 'contacts' ? 'active' : ''}">
+                <a class="nav-link" href="#"  th:href="@{/contacts}">Contacts</a>
+            </li>
+            <li class="nav-item" th:classappend="${module == 'companies' ? 'active' : ''}">
+                <a class="nav-link" href="#" th:href="@{/companies}">Companies</a>
+            </li>
+        </ul>
+
+    </nav>
+</div>
