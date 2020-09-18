@@ -9,9 +9,9 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class ContactRoot {
+public class ContactsRoot {
 
     private ContactMeta meta;
-    private ContactData data;
+    private List<ContactData> data;
     private List<Object> included;
 }

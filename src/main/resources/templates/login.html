@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="icon" href="/docs/4.1/assets/img/favicons/favicon.ico">
+
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sign-in/">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <!--    <link type="css" th:rel="stylesheet" th:href="@{/css/signin.css} "/>-->
+    <!--    <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/sign-in/signin.css">-->
+    <link th:href="@{/css/signin.css}" type="text/css" rel="stylesheet"/>
+
+
+</head>
+
+<body class="text-center">
+<form class="form-signin" th:action="@{/login}" method="post">
+
+    <img class="mb-4"
+         src="https://scontent-cdg2-1.xx.fbcdn.net/v/t1.0-9/84387239_3006949159323763_3723078502023430144_n.png?_nc_cat=107&_nc_sid=85a577&_nc_ohc=RAj2oCUSt6sAX9XHFYA&_nc_ht=scontent-cdg2-1.xx&oh=fb1fe6db464b756cda9eabd30c209363&oe=5F8AEBF7"
+         alt="" width="72" height="72">
+    <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+
+    <label class="sr-only" for="username">Username</label>
+    <input type="text" id="username" class="form-control" placeholder="Email address" name="username"
+           autofocus="autofocus"/>
+
+
+    <label for="password" class="sr-only">Password</label>
+    <input type="password" id="password" class="form-control" placeholder="Password"  name="password" required />
+
+    <div class="checkbox mb-3">
+        <label>
+            <input type="checkbox" value="remember-me"> Remember me
+        </label>
+    </div>
+    <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+    <p class="mt-5 mb-3 text-muted">&copy; 2020-2011</p>
+</form>
+</body>
+</html>

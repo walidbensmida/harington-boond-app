@@ -4,14 +4,17 @@ import com.harington.boond.client.BoondFeignClient;
 import com.harington.boond.model.User;
 import com.harington.boond.model.companies.CompaniesRoot;
 import com.harington.boond.model.contact.output.ContactRoot;
+import com.harington.boond.model.contact.output.ContactsRoot;
 import com.opencsv.bean.CsvToBean;
 import com.opencsv.bean.CsvToBeanBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -28,11 +31,18 @@ public class BoondController {
     @Autowired
     private BoondFeignClient boondFeignClient;
 
-    @GetMapping("/")
-    public String accueil(Model model) {
-        model.addAttribute("module", "home");
+    @Value("${boond.bounces.company.id}")
+    private String bouncesCompanyId;
 
-        return "index";
+    @RequestMapping("/login")
+    public String login() {
+        return "login";
+    }
+
+    @RequestMapping({ "/index", "/" })
+    public String index(Model model) {
+        model.addAttribute("module", "home");
+        return "Accueil";
     }
 
     @GetMapping("/companies")
@@ -45,42 +55,16 @@ public class BoondController {
         return "companiesList";
     }
 
+    @GetMapping("/bounce-company-contacts")
+    public String getContactsForCompany(Model model) {
+        ContactsRoot bounceContacts = boondFeignClient.getContactsForCompany(Long.valueOf(bouncesCompanyId));
 
-    @PostMapping("/upload-csv-file")
-    public String uploadCSVFile(@RequestParam("file") MultipartFile file, Model model) {
+        model.addAttribute("contacts", bounceContacts);
+        model.addAttribute("module", "bounce");
 
-        // validate file
-        if (file.isEmpty()) {
-            model.addAttribute("message", "Please select a CSV file to upload.");
-            model.addAttribute("status", false);
-        } else {
-
-            // parse CSV file to create a list of `User` objects
-            try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
-
-                // create csv bean reader
-                CsvToBean<User> csvToBean = new CsvToBeanBuilder(reader)
-                        .withType(User.class)
-                        .withIgnoreLeadingWhiteSpace(true)
-                        .build();
-
-                // convert `CsvToBean` object to list of users
-                List<User> users = csvToBean.parse();
-
-                // TODO: save users in DB?
-
-                // save users list on model
-                model.addAttribute("users", users);
-                model.addAttribute("status", true);
-
-            } catch (Exception ex) {
-                model.addAttribute("message", "An error occurred while processing the CSV file.");
-                model.addAttribute("status", false);
-            }
-        }
-
-        return "file-upload-status";
+        return "BounceContactList";
     }
+
 
     @PostMapping("/upload-hardbounces")
     public String uploadHardBounces(@RequestParam("file") MultipartFile file, Model model) {
@@ -91,7 +75,7 @@ public class BoondController {
             model.addAttribute("message", "Please select a CSV file to upload.");
             model.addAttribute("status", false);
         } else {
-
+            model.addAttribute("module", "home");
             // parse CSV file to create a list of `User` objects
             try (Reader reader = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
 
@@ -109,11 +93,10 @@ public class BoondController {
                     ContactRoot contactInformation = boondFeignClient.getContactInformation(u.getId());
 
                     listOfContacts.add(contactInformation);
-                    contactInformation.getData().getRelationships().getCompany().getData().setId("1");
-                    boondFeignClient.updateContactInformation(contactInformation);
+                    contactInformation.getData().getRelationships().getCompany().getData().setId(bouncesCompanyId);
+                    boondFeignClient.updateContactInformation(u.getId(),contactInformation);
                 }
 
-                // TODO: save users in DB?
 
                 // save users list on model
                 model.addAttribute("users", users);
@@ -126,7 +109,7 @@ public class BoondController {
             }
         }
 
-        return "contactsList";
+        return "file-upload-status";
     }
 
 }

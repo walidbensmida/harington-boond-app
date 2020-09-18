@@ -1,41 +1,50 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <title>Bootstrap Example</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Top navbar example for Bootstrap</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/navbar-static/">
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.1/examples/sticky-footer-navbar/">
+
     <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{/css/sticky-footer-navbar.css} "/>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 
+    <!--    <link href="navbar-top.css" rel="stylesheet">-->
 </head>
+
 <body>
 <div th:insert="/fragments/header :: header"></div>
-<!--<div class="container">-->
-<!--    <form method="POST" th:action="@{/upload-csv-file}" enctype="multipart/form-data">-->
-<!--        <div class="form-group mt-3">-->
-<!--            <label for="file">Select a CSV file</label>-->
-<!--            <input type="file" name="file" class="form-control-file" id="file" accept=".csv">-->
-<!--        </div>-->
-<!--        <button type="submit" class="btn btn-primary">Import Users</button>-->
-<!--    </form>-->
-<!--</div>-->
 
 <main role="main" class="container">
     <div class="jumbotron">
-        <form method="POST" th:action="@{/upload-csv-file}" enctype="multipart/form-data">
+        <h1>Hardbounces manager</h1>
+        <p class="lead">Cette application lit le fichier csv issu de SendInBlue uploadé, extrait les contacts et les déplace sous la société
+            Bounces en enlevant le mail.</p>
+        <form method="POST" th:action="@{/upload-hardbounces}" enctype="multipart/form-data">
             <div class="form-group mt-3">
-                <label for="file">Select a CSV file</label>
+<!--                <label for="file">Choisir un fichier csv</label>-->
                 <input type="file" name="file" class="form-control-file" id="file" accept=".csv">
             </div>
-            <button type="submit" class="btn btn-primary">Import Users</button>
+            <button type="submit" class="btn btn-primary">Import Contacts</button>
         </form>
-        <button type="submit" class="btn btn-primary">Import Users</button>
     </div>
 </main>
-
+<footer class="footer">
+    <div class="container">
+        <span class="text-muted">Harington group</span>
+    </div>
+</footer>
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script  th:href="@{/js/bootstrap.min.js}"></script>
 </body>
 </html>
-

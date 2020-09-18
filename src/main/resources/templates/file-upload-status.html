@@ -4,28 +4,12 @@
     <title>Bootstrap Example</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-    <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
+    <div th:insert="fragments/header :: header-imports"/>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-<nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
-    <a class="navbar-brand" href="#">Harington Boond</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarCollapse">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
+<div th:insert="/fragments/header :: header"></div>
 
-        </ul>
-    </div>
-</nav>
 <div class="container py-5">
     <div class="row">
         <div class="col-10 mx-auto">
@@ -36,29 +20,31 @@
                 <span th:text="${message}"></span>
             </div>
 
+
             <!--display users list-->
             <table class="table table-striped" th:if="${status}">
                 <thead>
                 <tr>
-                    <th scope="col">#</th>
                     <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Age</th>
+                    <th scope="col">FIRSTNAME</th>
+                    <th scope="col">LASTNAME</th>
+                    <th scope="col">EMAIL</th>
+                    <th scope="col">PHONE</th>
+                    <th scope="col">COUNTRY</th>
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="user, i : ${users}">
-                    <th scope="row" th:text="${i.index + 1}"></th>
-                    <td th:text="${user.id}"></td>
-                    <td th:text="${user.name}"></td>
-                    <td th:text="${user.email}"></td>
-                    <td th:text="${user.countryCode}"></td>
-                    <td th:text="${user.age}"></td>
+                <tr th:each="contact, i : ${contacts}">
+                    <td th:text="${contact.data.id}"></td>
+                    <td th:text="${contact.data.attributes.firstName}"></td>
+                    <td th:text="${contact.data.attributes.lastName}"></td>
+                    <td th:text="${contact.data.attributes.email1}"></td>
+                    <td th:text="${contact.data.attributes.phone1}"></td>
+                    <td th:text="${contact.data.attributes.country}"></td>
                 </tr>
                 </tbody>
             </table>
+            <a href="#" th:href="@{/}"> retour</a>
         </div>
     </div>
 </div>

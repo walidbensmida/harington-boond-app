@@ -1,27 +1,59 @@
-<div th:fragment="footer">
-<nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
-    <a class="navbar-brand" href="#">Dashboard</a>
-    <button class="navbar-toggler d-lg-none" type="button"
-            data-toggle="collapse" data-target="#navbarsExampleDefault"
-            aria-controls="navbarsExampleDefault" aria-expanded="false"
-            aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <div th:fragment="header-imports">
 
-    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active"><a class="nav-link" href="#">Home
-                <span class="sr-only">(current)</span>
-            </a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Settings</a>
-            </li>
-            <li class="nav-item"><a class="nav-link" href="#">Profile</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">Help</a></li>
-        </ul>
+        <link th:rel="stylesheet" th:href="@{/css/bootstrap.min.css} "/>
 
-        <form th:action="@{/logout}" method="post">
-            <button type="submit" class="btn btn-primary">Sign Out</<button>
-        </form>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+        <script src="https://unpkg.com/bootstrap-table@1.17.1/dist/bootstrap-table.min.js"></script>
+        <script type="text/javascript" th:src="@{/js/app-functions.js}"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/dataTables.bootstrap4.min.js"></script>
+
+        <link th:rel="stylesheet" th:href="@{/bootstrap-table/bootstrap-table.min.css} "/>
+        <link th:rel="stylesheet" th:href="@{/css/app-styling.css} "/>
+
     </div>
-</nav>
+
+</head>
+
+<body>
+<div th:fragment="header">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+
+        <a class="navbar-brand" href="#">
+            <img src="https://www.harington.fr/sites/default/files/styles/logo_header/public/2019-05/logo.png?itok=8PStHOZQ"
+                 alt="logo" style="width:40px;">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item" th:classappend="${module == 'home' ? 'active' : ''}">
+                    <a class="nav-link" href="#" th:href="@{/}">Hard Bounces</a>
+                </li>
+                <li class="nav-item " th:classappend="${module == 'contacts' ? 'active' : ''}">
+                    <a class="nav-link" href="#" th:href="@{/contacts}">Contacts</a>
+                </li>
+                <li class="nav-item" th:classappend="${module == 'bounce' ? 'active' : ''}">
+                    <a class="nav-link" href="#" th:href="@{/bounce-company-contacts}">Société Bounce</a>
+                </li>
+            </ul>
+            <form class="form-inline mt-2 mt-md-0">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="#" th:href="@{/logout}">Logout <span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </form>
+        </div>
+    </nav>
 </div>
+</body>
+</html>

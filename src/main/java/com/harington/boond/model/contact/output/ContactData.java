@@ -1,17 +1,15 @@
 package com.harington.boond.model.contact.output;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ContactData {
-    public String id;
-    public String type;
-    public ContactAttributes attributes;
-    public ContactRelationships relationships;
+    private String id;
+    private String type;
+    private ContactAttributes attributes;
+    private ContactRelationships relationships;
 }

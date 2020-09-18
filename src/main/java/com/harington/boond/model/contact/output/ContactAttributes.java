@@ -1,37 +1,35 @@
 package com.harington.boond.model.contact.output;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.util.List;
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 public class ContactAttributes {
-    public String creationDate;
-    public String updateDate;
-    public int civility;
-    public String firstName;
-    public String lastName;
-    public int state;
-    public String email1;
-    public String email2;
-    public String email3;
-    public String phone1;
-    public String phone2;
-    public String fax;
-    public String address;
-    public String postcode;
-    public String town;
-    public String country;
-    public ContactOrigin origin;
-    public List<Object> activityAreas;
-    public String informationComments;
-    public List<Object> tools;
-    public String department;
-    public String function;
-    public List<Object> socialNetworks;
+    private String creationDate;
+    private String updateDate;
+    private int civility;
+    private String firstName;
+    private String lastName;
+    private int state;
+    private String email1;
+    private String email2;
+    private String email3;
+    private String phone1;
+    private String phone2;
+    private String fax;
+    private String address;
+    private String postcode;
+    private String town;
+    private String country;
+    private ContactOrigin origin;
+    private List<Object> activityAreas;
+    private String informationComments;
+    private List<Object> tools;
+    private String department;
+    private String function;
+    private List<Object> socialNetworks;
 }

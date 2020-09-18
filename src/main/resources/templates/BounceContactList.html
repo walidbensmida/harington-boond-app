@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <div th:insert="fragments/header :: header-imports"/>
+
+
+</head>
+<body>
+<div th:insert="/fragments/header :: header"></div>
+
+
+<!--display users list-->
+<div class="container">
+<!--    <table class="table table-striped">-->
+<!--        <thead>-->
+<!--        <tr>-->
+<!--            <th scope="col">ID</th>-->
+<!--            <th scope="col">FIRSTNAME</th>-->
+<!--            <th scope="col">LASTNAME</th>-->
+<!--            <th scope="col">EMAIL</th>-->
+<!--            <th scope="col">PHONE</th>-->
+<!--            <th scope="col">COUNTRY</th>-->
+<!--        </tr>-->
+<!--        </thead>-->
+<!--        <tbody>-->
+<!--        <tr th:each="contact, i : ${contacts.data}">-->
+<!--            <td th:text="${contact.id}"></td>-->
+<!--            <td th:text="${contact.attributes.firstName}"></td>-->
+<!--            <td th:text="${contact.attributes.lastName}"></td>-->
+<!--            <td th:text="${contact.attributes.email1}"></td>-->
+<!--            <td th:text="${contact.attributes.phone1}"></td>-->
+<!--            <td th:text="${contact.attributes.country}"></td>-->
+<!--        </tr>-->
+<!--        </tbody>-->
+<!--    </table>-->
+    <table id="example" class="table table-striped table-bordered" style="width:100%">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FIRSTNAME</th>
+            <th scope="col">LASTNAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">PHONE</th>
+            <th scope="col">COUNTRY</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contact, i : ${contacts.data}">
+            <td th:text="${contact.id}"></td>
+            <td th:text="${contact.attributes.firstName}"></td>
+            <td th:text="${contact.attributes.lastName}"></td>
+            <td th:text="${contact.attributes.email1}"></td>
+            <td th:text="${contact.attributes.phone1}"></td>
+            <td th:text="${contact.attributes.country}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
